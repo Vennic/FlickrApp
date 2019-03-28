@@ -1,6 +1,8 @@
-package com.kuzheevadel.daggerrxapp
+package com.kuzheevadel.daggerrxapp.dagger
 
 import android.content.Context
+import com.kuzheevadel.daggerrxapp.network.NetworkModule
+import com.kuzheevadel.daggerrxapp.photolist.FlickrListModule
 import com.kuzheevadel.daggerrxapp.photolist.FlicrListComponent
 import dagger.Component
 import dagger.Module
@@ -18,7 +20,7 @@ class AppModule(private val context: Context) {
 }
 
 @Singleton
-@Component(modules = [AppModule::class])
+@Component(modules = [AppModule::class, NetworkModule::class])
 interface AppComponent {
-    fun createFlickrListComponent(): FlicrListComponent
+    fun getFlickrListComponent(flickrListModule: FlickrListModule): FlicrListComponent
 }

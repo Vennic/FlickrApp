@@ -7,12 +7,12 @@ import dagger.Subcomponent
 import javax.inject.Scope
 
 @Module
-class FlickrListModule {
+class FlickrListModule(private val activity: FlickrListActivity) {
 
     @FlickrListScope
     @Provides
     fun providePresenter(): FlickrListPresenter {
-        return FlickrListPresenter()
+        return FlickrListPresenter(activity)
     }
 
     @FlickrListScope

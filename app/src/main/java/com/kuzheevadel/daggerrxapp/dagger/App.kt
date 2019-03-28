@@ -1,6 +1,8 @@
-package com.kuzheevadel.daggerrxapp
+package com.kuzheevadel.daggerrxapp.dagger
 
 import android.app.Application
+import com.kuzheevadel.daggerrxapp.photolist.FlickrListActivity
+import com.kuzheevadel.daggerrxapp.photolist.FlickrListModule
 import com.kuzheevadel.daggerrxapp.photolist.FlicrListComponent
 
 class App: Application() {
@@ -15,7 +17,13 @@ class App: Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-        appComponent = DaggerAppComponent.builder().appModule(AppModule(this)).build()
+        appComponent = DaggerAppComponent.builder()
+            .appModule(AppModule(this)).build()
+    }
+
+    fun createFlickrListComponent(activity: FlickrListActivity): FlicrListComponent? {
+        flicrListComponent = appComponent.getFlickrListComponent(FlickrListModule(activity))
+        return flicrListComponent
     }
 
     fun releaseFlickrListComponent() {
