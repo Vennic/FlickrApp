@@ -9,7 +9,7 @@ class App: Application() {
         lateinit var instance: App
     }
 
-    lateinit var appComponent: AppComponent
+    private lateinit var appComponent: AppComponent
     private var flicrListComponent: FlicrListComponent? = null
 
     override fun onCreate() {
@@ -21,4 +21,6 @@ class App: Application() {
     fun releaseFlickrListComponent() {
         flicrListComponent = null
     }
+
+    fun getAppComponent() = appComponent
 }

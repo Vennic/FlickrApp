@@ -17,7 +17,7 @@ class FlickrListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.flickr_list_activity)
-        App.instance.appComponent.createFlickrListComponent().inject(this)
+        App.instance.getAppComponent().createFlickrListComponent().inject(this)
 
         flickr_list_rw.layoutManager = LinearLayoutManager(this)
         flickr_list_rw.adapter = adapter
