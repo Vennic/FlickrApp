@@ -11,8 +11,8 @@ class FlickrListModule {
 
     @FlickrListScope
     @Provides
-    fun providePresenter(): Presenter {
-        return Presenter()
+    fun providePresenter(): FlickrListPresenter {
+        return FlickrListPresenter()
     }
 
     @FlickrListScope

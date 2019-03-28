@@ -5,10 +5,11 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import com.kuzheevadel.daggerrxapp.R
 import kotlinx.android.synthetic.main.rv_list_item.view.*
 
-class RwAdapter(var listItems: List<Int>, var context: Context): RecyclerView.Adapter<RwViewHolder>() {
+class RwAdapter(private var listItems: List<Int>,private var context: Context): RecyclerView.Adapter<RwAdapter.RwViewHolder>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): RwViewHolder {
         val layoutInflater: LayoutInflater = LayoutInflater.from(context)
@@ -21,14 +22,14 @@ class RwAdapter(var listItems: List<Int>, var context: Context): RecyclerView.Ad
     }
 
     override fun onBindViewHolder(viewHolder: RwViewHolder, p1: Int) {
-        val drawable = context.resources.getDrawable(R.drawable.bill_up_close)
-        viewHolder.imageView.setImageDrawable(drawable)
+        viewHolder.imageView.setImageResource(R.drawable.bill_up_close)
+    }
+
+    inner class RwViewHolder(item: View): RecyclerView.ViewHolder(item) {
+
+        val imageView: ImageView = item.photo_image_view
+
     }
 
 }
 
-class RwViewHolder(item: View): RecyclerView.ViewHolder(item) {
-
-    val imageView = item.photo_image_view
-
-}
