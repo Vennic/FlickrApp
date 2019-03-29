@@ -7,6 +7,7 @@ import com.kuzheevadel.daggerrxapp.dagger.App
 import com.kuzheevadel.daggerrxapp.R
 import com.kuzheevadel.daggerrxapp.common.Photo
 import com.kuzheevadel.daggerrxapp.interfaces.ListActivityInterface
+import com.kuzheevadel.daggerrxapp.interfaces.ListPresenterInterface
 import kotlinx.android.synthetic.main.flickr_list_activity.*
 import javax.inject.Inject
 
@@ -17,7 +18,7 @@ class FlickrListActivity : AppCompatActivity(), ListActivityInterface {
     lateinit var mAdapter: RwAdapter
 
     @Inject
-    lateinit var mPresenter: FlickrListPresenter
+    lateinit var mPresenter: ListPresenterInterface
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
