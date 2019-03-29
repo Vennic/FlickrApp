@@ -14,10 +14,10 @@ import javax.inject.Inject
 class FlickrListActivity : AppCompatActivity(), ListActivityInterface {
 
     @Inject
-    lateinit var adapter: RwAdapter
+    lateinit var mAdapter: RwAdapter
 
     @Inject
-    lateinit var presenter: FlickrListPresenter
+    lateinit var mPresenter: FlickrListPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,8 +25,8 @@ class FlickrListActivity : AppCompatActivity(), ListActivityInterface {
         App.instance.createFlickrListComponent(this)?.inject(this)
 
         flickr_list_rw.layoutManager = LinearLayoutManager(this)
-        flickr_list_rw.adapter = adapter
-        presenter.downloadPhotos()
+        flickr_list_rw.adapter = mAdapter
+        mPresenter.downloadPhotos()
     }
 
     override fun onDestroy() {
@@ -35,7 +35,7 @@ class FlickrListActivity : AppCompatActivity(), ListActivityInterface {
     }
 
     override fun updateAdapter(photoList: List<Photo>) {
-        adapter.listItems = photoList
-        adapter.notifyDataSetChanged()
+        mAdapter.listItems = photoList
+        mAdapter.notifyDataSetChanged()
     }
 }

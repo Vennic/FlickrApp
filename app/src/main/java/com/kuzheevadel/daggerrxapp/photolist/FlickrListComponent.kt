@@ -3,10 +3,10 @@ package com.kuzheevadel.daggerrxapp.photolist
 import android.content.Context
 import com.kuzheevadel.daggerrxapp.common.Photo
 import com.kuzheevadel.daggerrxapp.interfaces.ListActivityInterface
+import com.kuzheevadel.daggerrxapp.network.NetworkService
 import dagger.Module
 import dagger.Provides
 import dagger.Subcomponent
-import retrofit2.Retrofit
 import javax.inject.Scope
 
 @Module
@@ -14,8 +14,8 @@ class FlickrListModule(private val listActivity: ListActivityInterface) {
 
     @FlickrListScope
     @Provides
-    fun providePresenter(retrofit: Retrofit): FlickrListPresenter {
-        return FlickrListPresenter(listActivity, retrofit)
+    fun providePresenter(networkService: NetworkService): FlickrListPresenter {
+        return FlickrListPresenter(listActivity, networkService)
     }
 
     @FlickrListScope

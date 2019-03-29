@@ -5,16 +5,16 @@ import com.kuzheevadel.daggerrxapp.Constants
 import com.kuzheevadel.daggerrxapp.common.Photo
 import com.kuzheevadel.daggerrxapp.interfaces.ListActivityInterface
 import com.kuzheevadel.daggerrxapp.interfaces.ListPresenterInterface
-import com.kuzheevadel.daggerrxapp.network.NetworkModule
+import com.kuzheevadel.daggerrxapp.network.NetworkService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import retrofit2.Retrofit
+
 
 class FlickrListPresenter(private val listActivity: ListActivityInterface,
-                          private val retrofit: Retrofit): ListPresenterInterface {
+                          private val networkService: NetworkService): ListPresenterInterface {
 
     override fun downloadPhotos() {
-        NetworkModule.getPhotoList(retrofit)
+        networkService.getPhotoList()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {

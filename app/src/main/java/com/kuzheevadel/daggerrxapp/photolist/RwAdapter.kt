@@ -8,9 +8,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.kuzheevadel.daggerrxapp.R
 import com.kuzheevadel.daggerrxapp.common.Photo
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.rv_list_item.view.*
 
 class RwAdapter(var listItems: List<Photo>,private var context: Context): RecyclerView.Adapter<RwAdapter.RwViewHolder>() {
+
+    private val mPicasso = Picasso.get()
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): RwViewHolder {
         val layoutInflater: LayoutInflater = LayoutInflater.from(context)
@@ -23,7 +26,8 @@ class RwAdapter(var listItems: List<Photo>,private var context: Context): Recycl
     }
 
     override fun onBindViewHolder(viewHolder: RwViewHolder, p1: Int) {
-        viewHolder.imageView.setImageResource(R.drawable.bill_up_close)
+        mPicasso.load(listItems[p1].url_c)
+            .into(viewHolder.imageView)
     }
 
     inner class RwViewHolder(item: View): RecyclerView.ViewHolder(item) {
