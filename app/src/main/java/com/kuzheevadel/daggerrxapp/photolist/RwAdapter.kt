@@ -7,9 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.kuzheevadel.daggerrxapp.R
+import com.kuzheevadel.daggerrxapp.common.Photo
 import kotlinx.android.synthetic.main.rv_list_item.view.*
 
-class RwAdapter(private var listItems: List<Int>,private var context: Context): RecyclerView.Adapter<RwAdapter.RwViewHolder>() {
+class RwAdapter(var listItems: List<Photo>,private var context: Context): RecyclerView.Adapter<RwAdapter.RwViewHolder>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): RwViewHolder {
         val layoutInflater: LayoutInflater = LayoutInflater.from(context)

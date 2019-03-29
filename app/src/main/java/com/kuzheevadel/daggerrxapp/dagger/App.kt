@@ -1,7 +1,7 @@
 package com.kuzheevadel.daggerrxapp.dagger
 
 import android.app.Application
-import com.kuzheevadel.daggerrxapp.photolist.FlickrListActivity
+import com.kuzheevadel.daggerrxapp.interfaces.ListActivityInterface
 import com.kuzheevadel.daggerrxapp.photolist.FlickrListModule
 import com.kuzheevadel.daggerrxapp.photolist.FlicrListComponent
 
@@ -21,8 +21,8 @@ class App: Application() {
             .appModule(AppModule(this)).build()
     }
 
-    fun createFlickrListComponent(activity: FlickrListActivity): FlicrListComponent? {
-        flicrListComponent = appComponent.getFlickrListComponent(FlickrListModule(activity))
+    fun createFlickrListComponent(listActivity: ListActivityInterface): FlicrListComponent? {
+        flicrListComponent = appComponent.getFlickrListComponent(FlickrListModule(listActivity))
         return flicrListComponent
     }
 
