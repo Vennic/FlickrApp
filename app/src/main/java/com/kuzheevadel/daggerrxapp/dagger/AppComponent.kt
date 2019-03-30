@@ -22,5 +22,5 @@ class AppModule(private val context: Context) {
 @Singleton
 @Component(modules = [AppModule::class, NetworkModule::class])
 interface AppComponent {
-    fun getFlickrListComponent(flickrListModule: FlickrListModule): FlicrListComponent
+    fun getFlickrListComponent(): FlicrListComponent
 }

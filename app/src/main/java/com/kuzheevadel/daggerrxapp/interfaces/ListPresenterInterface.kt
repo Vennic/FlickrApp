@@ -1,5 +1,6 @@
 package com.kuzheevadel.daggerrxapp.interfaces
 
-interface ListPresenterInterface {
+
+interface ListPresenterInterface: MvpPresenter<ListActivityInterface> {
     fun downloadPhotos()
 }

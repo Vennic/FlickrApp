@@ -1,7 +1,9 @@
 package com.kuzheevadel.daggerrxapp.interfaces
 
-import com.kuzheevadel.daggerrxapp.common.Photo
+import com.kuzheevadel.daggerrxapp.photolist.RwAdapter
 
-interface ListActivityInterface {
-    fun updateAdapter(photoList: List<Photo>)
+interface ListActivityInterface: MvpView {
+    fun getAdapter(): RwAdapter
+    fun showProgressBar()
+    fun hideProgressBar()
 }

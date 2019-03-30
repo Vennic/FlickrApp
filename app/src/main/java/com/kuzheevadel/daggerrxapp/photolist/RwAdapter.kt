@@ -11,7 +11,7 @@ import com.kuzheevadel.daggerrxapp.common.Photo
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.rv_list_item.view.*
 
-class RwAdapter(var listItems: List<Photo>,private var context: Context): RecyclerView.Adapter<RwAdapter.RwViewHolder>() {
+class RwAdapter(var listItems: ArrayList<Photo>,private var context: Context): RecyclerView.Adapter<RwAdapter.RwViewHolder>() {
 
     private val mPicasso = Picasso.get()
 
@@ -28,6 +28,24 @@ class RwAdapter(var listItems: List<Photo>,private var context: Context): Recycl
     override fun onBindViewHolder(viewHolder: RwViewHolder, p1: Int) {
         mPicasso.load(listItems[p1].url_c)
             .into(viewHolder.imageView)
+    }
+
+    fun updateAdapter(photoList: ArrayList<Photo>) {
+        when (listItems.isEmpty()) {
+            true -> {
+                listItems = photoList
+                notifyDataSetChanged()}
+            else -> {
+                val i = listItems.size - 1
+                listItems.addAll(photoList)
+                notifyItemInserted(i)
+            }
+        }
+    }
+
+    fun clearAdapterList() {
+        listItems.clear()
+        notifyDataSetChanged()
     }
 
     inner class RwViewHolder(item: View): RecyclerView.ViewHolder(item) {

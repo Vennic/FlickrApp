@@ -21,8 +21,8 @@ class App: Application() {
             .appModule(AppModule(this)).build()
     }
 
-    fun createFlickrListComponent(listActivity: ListActivityInterface): FlicrListComponent? {
-        flicrListComponent = appComponent.getFlickrListComponent(FlickrListModule(listActivity))
+    fun createFlickrListComponent(): FlicrListComponent? {
+        flicrListComponent = appComponent.getFlickrListComponent()
         return flicrListComponent
     }
 

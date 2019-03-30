@@ -3,6 +3,7 @@ package com.kuzheevadel.daggerrxapp.photolist
 import android.content.Context
 import com.kuzheevadel.daggerrxapp.common.Photo
 import com.kuzheevadel.daggerrxapp.interfaces.ListActivityInterface
+import com.kuzheevadel.daggerrxapp.interfaces.ListPresenterInterface
 import com.kuzheevadel.daggerrxapp.network.NetworkService
 import dagger.Module
 import dagger.Provides
@@ -10,24 +11,24 @@ import dagger.Subcomponent
 import javax.inject.Scope
 
 @Module
-class FlickrListModule(private val listActivity: ListActivityInterface) {
+class FlickrListModule {
 
     @FlickrListScope
     @Provides
-    fun providePresenter(networkService: NetworkService): FlickrListPresenter {
-        return FlickrListPresenter(listActivity, networkService)
+    fun providePresenter(networkService: NetworkService): ListPresenterInterface {
+        return FlickrListPresenter(networkService)
     }
 
     @FlickrListScope
     @Provides
-    fun provideAdapter(list: List<Photo>, context: Context): RwAdapter {
+    fun provideAdapter(list: ArrayList<Photo>, context: Context): RwAdapter {
         return RwAdapter(list, context)
     }
 
     @FlickrListScope
     @Provides
-    fun provideList(): List<Photo> {
-        return listOf()
+    fun provideList(): ArrayList<Photo> {
+        return arrayListOf()
     }
 }
 
